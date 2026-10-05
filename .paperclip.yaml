@@ -1,0 +1,253 @@
+schema: "paperclip/v1"
+agents:
+  arch-master:
+    role: "general"
+    adapter:
+      config:
+        dangerouslySkipPermissions: true
+        effort: "medium"
+        model: "claude-sonnet-5"
+      type: "claude_local"
+    runtime:
+      aiConnection:
+        method: "subscription"
+        mode: "responsible_user"
+        provider: "anthropic"
+      heartbeat:
+        intervalSec: 300
+        skipTimerWhenNoActionableWork: true
+    permissions:
+      canCreateAgents: true
+      canCreateSkills: true
+    permissionGrants:
+      -
+        permissionKey: "tasks:assign"
+    appearance:
+      characterVersion: "cap-v1"
+      paletteId: "ultraviolet-tide"
+      schemaVersion: 1
+  cloud-architect:
+    role: "devops"
+    icon: "hexagon"
+    capabilities: "Responsável pela Azure, OCI e AWS: landing zones, estrutura de subscriptions, tenancies e accounts, seleção de serviços gerenciados por nuvem (incluindo Kubernetes gerenciado versus OpenShift), redes em nuvem, resiliência em nuvem e guardrails de custo e capacidade."
+    adapter:
+      config:
+        dangerouslySkipPermissions: true
+        effort: "medium"
+        model: "claude-sonnet-5"
+      type: "claude_local"
+    runtime:
+      aiConnection:
+        method: "subscription"
+        mode: "responsible_user"
+        provider: "anthropic"
+    permissions:
+      canCreateAgents: true
+      canCreateSkills: true
+    permissionGrants:
+      -
+        permissionKey: "tasks:assign"
+    appearance:
+      characterVersion: "cap-v1"
+      paletteId: "ultraviolet-tide"
+      schemaVersion: 1
+  enterprise-architect:
+    role: "general"
+    icon: "globe"
+    capabilities: "Responsável pela visão do banco como um todo: mapas de capacidades e de domínios, arquitetura do estado-alvo, critérios de posicionamento de workload e padrões corporativos de arquitetura."
+    adapter:
+      config:
+        dangerouslySkipPermissions: true
+        effort: "medium"
+        model: "claude-sonnet-5"
+      type: "claude_local"
+    runtime:
+      aiConnection:
+        method: "subscription"
+        mode: "responsible_user"
+        provider: "anthropic"
+    permissions:
+      canCreateAgents: true
+      canCreateSkills: true
+    permissionGrants:
+      -
+        permissionKey: "tasks:assign"
+    appearance:
+      characterVersion: "cap-v1"
+      paletteId: "coral-mint"
+      schemaVersion: 1
+  governance-architect:
+    role: "pm"
+    icon: "file-code"
+    capabilities: "Responsável pelo modelo operacional do Escritório de Arquitetura: ciclo de vida de ADR e AR, registro de decisões e regras de substituição, entrada no comitê da guilda e critérios de prontidão, conformidade com padrões, caminho de exceção e waiver, e mapeamento de obrigações regulatórias para controles de arquitetura."
+    adapter:
+      config:
+        dangerouslySkipPermissions: true
+        effort: "medium"
+        model: "claude-sonnet-5"
+      type: "claude_local"
+    runtime:
+      aiConnection:
+        method: "subscription"
+        mode: "responsible_user"
+        provider: "anthropic"
+    permissions:
+      canCreateAgents: true
+      canCreateSkills: true
+    permissionGrants:
+      -
+        permissionKey: "tasks:assign"
+    appearance:
+      characterVersion: "cap-v1"
+      paletteId: "pink-lemonade"
+      schemaVersion: 1
+  infrastructure-architect:
+    role: "devops"
+    icon: "circuit-board"
+    capabilities: "Responsável pelo parque on-premises: topologia do data center active-active, padrões de rede, storage, compute e VMs, conectividade híbrida com as três nuvens, disaster recovery e capacidade."
+    adapter:
+      config:
+        dangerouslySkipPermissions: true
+        effort: "medium"
+        model: "claude-sonnet-5"
+      type: "claude_local"
+    runtime:
+      aiConnection:
+        method: "subscription"
+        mode: "responsible_user"
+        provider: "anthropic"
+    permissions:
+      canCreateAgents: true
+      canCreateSkills: true
+    permissionGrants:
+      -
+        permissionKey: "tasks:assign"
+    appearance:
+      characterVersion: "cap-v1"
+      paletteId: "tangerine-cobalt"
+      schemaVersion: 1
+  principal-architect:
+    role: "cto"
+    icon: "crown"
+    capabilities: "Conduz o Escritório de Arquitetura: define a barra de qualidade de ADR e AR, prioriza o backlog de artefatos, resolve divergências entre os architects de domínio e é o último gate interno de qualidade antes do comitê da guilda de arquitetura."
+    adapter:
+      config:
+        dangerouslySkipPermissions: true
+        effort: "medium"
+        model: "claude-opus-5-5"
+      type: "claude_local"
+    runtime:
+      aiConnection:
+        method: "subscription"
+        mode: "responsible_user"
+        provider: "anthropic"
+    permissions:
+      canCreateAgents: true
+      canCreateSkills: true
+    permissionGrants:
+      -
+        permissionKey: "tasks:assign"
+    appearance:
+      characterVersion: "cap-v1"
+      paletteId: "solar-flare"
+      schemaVersion: 1
+  security-architect:
+    role: "security"
+    icon: "shield"
+    capabilities: "Responsável por identidade e acesso, gestão de segredos e chaves, criptografia, segmentação de rede e zonas de confiança, redução do escopo do CDE e o lado de segurança dos requisitos do BACEN/CMN de segurança cibernética e contratação de nuvem, da LGPD e do PCI-DSS."
+    adapter:
+      config:
+        dangerouslySkipPermissions: true
+        effort: "medium"
+        model: "claude-sonnet-5"
+      type: "claude_local"
+    runtime:
+      aiConnection:
+        method: "subscription"
+        mode: "responsible_user"
+        provider: "anthropic"
+    permissions:
+      canCreateAgents: true
+      canCreateSkills: true
+    permissionGrants:
+      -
+        permissionKey: "tasks:assign"
+    appearance:
+      characterVersion: "cap-v1"
+      paletteId: "deep-tide"
+      schemaVersion: 1
+  solution-architect:
+    role: "engineer"
+    icon: "puzzle"
+    capabilities: "Produz desenhos de solução e HLDs por iniciativa, os padrões de integração que atravessam o OpenShift on-prem e as três nuvens, e é o principal autor das Referências de Arquitetura (ARs)."
+    adapter:
+      config:
+        dangerouslySkipPermissions: true
+        effort: "medium"
+      type: "claude_local"
+    runtime:
+      aiConnection:
+        method: "subscription"
+        mode: "responsible_user"
+        provider: "anthropic"
+    permissions:
+      canCreateAgents: true
+      canCreateSkills: true
+    permissionGrants:
+      -
+        permissionKey: "tasks:assign"
+    appearance:
+      characterVersion: "cap-v1"
+      paletteId: "cherry-pop"
+      schemaVersion: 1
+  technical-architect:
+    role: "engineer"
+    icon: "cpu"
+    capabilities: "Responsável pela camada de runtime e integração: padrões de workload em OpenShift e Kubernetes, o mix de API gateways, acesso a dados pelas aplicações, e NFRs e resiliência no nível de serviço."
+    adapter:
+      config:
+        dangerouslySkipPermissions: true
+        effort: "medium"
+        model: "claude-sonnet-5"
+      type: "claude_local"
+    runtime:
+      aiConnection:
+        method: "subscription"
+        mode: "responsible_user"
+        provider: "anthropic"
+    permissions:
+      canCreateAgents: true
+      canCreateSkills: true
+    permissionGrants:
+      -
+        permissionKey: "tasks:assign"
+    appearance:
+      characterVersion: "cap-v1"
+      paletteId: "coral-current"
+      schemaVersion: 1
+projects:
+  onboarding:
+    status: "in_progress"
+    workspaces:
+      fbruandrade-ach360:
+        name: "fbruandrade/ach360"
+        metadata:
+          githubRepositoryId: "1403775757"
+        isPrimary: true
+        repoUrl: "https://github.com/fbruandrade/ach360"
+        sourceType: "git_repo"
+        visibility: "default"
+schemaVersion: 7
+sidebar:
+  agents:
+    - "arch-master"
+    - "principal-architect"
+    - "cloud-architect"
+    - "enterprise-architect"
+    - "governance-architect"
+    - "infrastructure-architect"
+    - "security-architect"
+    - "solution-architect"
+    - "technical-architect"
+  projects:
+    - "onboarding"
