@@ -41,15 +41,27 @@ montar a cadeia de comando.
 
 | Agente | Papel no Paperclip | Modelo | Responsável por |
 |--------|--------------------|--------|-----------------|
-| [Arch Master](agents/arch-master/AGENTS.md) | general | `claude-sonnet-5` | Ponto único de contato do board. Recebe pedidos, encaminha o trabalho de arquitetura ao Principal Architect e mantém o board informado. Único agente com heartbeat periódico (300 s). |
-| [Principal Architect](agents/principal-architect/AGENTS.md) | cto | `claude-opus-5-5` | Barra de qualidade dos ADRs e ARs, prioridade do backlog, arbitragem entre domínios e último gate interno antes do comitê. |
-| [Enterprise Architect](agents/enterprise-architect/AGENTS.md) | general | `claude-sonnet-5` | Mapas de capacidades e de domínios, estado-alvo, critérios de posicionamento de workload e padrões corporativos. |
-| [Solution Architect](agents/solution-architect/AGENTS.md) | engineer | padrão do adapter | HLDs por iniciativa, integração entre on-prem e as três nuvens e autoria principal das ARs. |
-| [Technical Architect](agents/technical-architect/AGENTS.md) | engineer | `claude-sonnet-5` | Workloads em OpenShift e Kubernetes, mix de API gateways, acesso a dados, NFRs e resiliência no nível de serviço. |
-| [Cloud Architect](agents/cloud-architect/AGENTS.md) | devops | `claude-sonnet-5` | Azure, OCI e AWS: landing zones, serviços gerenciados, redes, resiliência e guardrails de custo. |
-| [Infrastructure Architect](agents/infrastructure-architect/AGENTS.md) | devops | `claude-sonnet-5` | Data center active-active, domínios de falha, DR, capacidade e conectividade híbrida. |
-| [Security Architect](agents/security-architect/AGENTS.md) | security | `claude-sonnet-5` | Identidade, segredos, chaves, criptografia, segmentação, escopo do CDE e o lado de segurança de BACEN/CMN, LGPD e PCI-DSS. |
-| [Governance Architect](agents/governance-architect/AGENTS.md) | pm | `claude-sonnet-5` | Templates e ciclo de vida de ADR/AR, registro de decisões, entrada no comitê, waivers e rastreabilidade regulatória. |
+| [Arch Master](agents/arch-master/AGENTS.md) | general | padrão do Codex | Ponto único de contato do board. Recebe pedidos, encaminha o trabalho de arquitetura ao Principal Architect e mantém o board informado. Único agente com heartbeat periódico (300 s). |
+| [Principal Architect](agents/principal-architect/AGENTS.md) | cto | padrão do Codex | Barra de qualidade dos ADRs e ARs, prioridade do backlog, arbitragem entre domínios e último gate interno antes do comitê. |
+| [Enterprise Architect](agents/enterprise-architect/AGENTS.md) | general | padrão do Codex | Mapas de capacidades e de domínios, estado-alvo, critérios de posicionamento de workload e padrões corporativos. |
+| [Solution Architect](agents/solution-architect/AGENTS.md) | engineer | padrão do Codex | HLDs por iniciativa, integração entre on-prem e as três nuvens e autoria principal das ARs. |
+| [Technical Architect](agents/technical-architect/AGENTS.md) | engineer | padrão do Codex | Workloads em OpenShift e Kubernetes, mix de API gateways, acesso a dados, NFRs e resiliência no nível de serviço. |
+| [Cloud Architect](agents/cloud-architect/AGENTS.md) | devops | padrão do Codex | Azure, OCI e AWS: landing zones, serviços gerenciados, redes, resiliência e guardrails de custo. |
+| [Infrastructure Architect](agents/infrastructure-architect/AGENTS.md) | devops | padrão do Codex | Data center active-active, domínios de falha, DR, capacidade e conectividade híbrida. |
+| [Security Architect](agents/security-architect/AGENTS.md) | security | padrão do Codex | Identidade, segredos, chaves, criptografia, segmentação, escopo do CDE e o lado de segurança de BACEN/CMN, LGPD e PCI-DSS. |
+| [Governance Architect](agents/governance-architect/AGENTS.md) | pm | padrão do Codex | Templates e ciclo de vida de ADR/AR, registro de decisões, entrada no comitê, waivers e rastreabilidade regulatória. |
+
+### Harness
+
+Todos os agentes rodam no adapter `codex_local` (Codex CLI) com o modelo padrão do adapter
+(`gpt-5.6-sol` na versão atual do Paperclip), esforço de raciocínio `medium` e o sandbox
+padrão do Codex (sem `dangerouslyBypassApprovalsAndSandbox`).
+
+- **URL do gateway:** configurada fora do pacote, em `/etc/codex/config.toml`
+  (`openai_base_url = "..."`), na máquina onde o Paperclip roda.
+- **API key:** cada agente declara `OPENAI_API_KEY` como segredo. Depois do import,
+  preencha a chave nas configurações de cada agente no Paperclip. Ela nunca fica no
+  repositório.
 
 ### Arquivos de instrução de cada agente
 
